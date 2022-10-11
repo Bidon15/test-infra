@@ -6,7 +6,7 @@ import (
 	"time"
 
 	"github.com/celestiaorg/celestia-node/das"
-	"github.com/celestiaorg/celestia-node/nodebuilder/node"
+	"github.com/celestiaorg/celestia-node/node"
 	"github.com/celestiaorg/test-infra/testkit"
 	"github.com/celestiaorg/test-infra/testkit/nodekit"
 	"github.com/celestiaorg/test-infra/tests/common"

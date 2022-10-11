@@ -4,8 +4,7 @@ import (
 	"context"
 	"fmt"
 
-	"github.com/celestiaorg/celestia-node/nodebuilder"
-	"github.com/celestiaorg/celestia-node/nodebuilder/node"
+	"github.com/celestiaorg/celestia-node/node"
 	"github.com/celestiaorg/test-infra/testkit"
 	"github.com/celestiaorg/test-infra/testkit/appkit"
 	"github.com/celestiaorg/test-infra/testkit/nodekit"
@@ -16,7 +15,7 @@ import (
 	"github.com/testground/sdk-go/sync"
 )
 
-func BuildBridge(ctx context.Context, runenv *runtime.RunEnv, initCtx *run.InitContext) (*nodebuilder.Node, error) {
+func BuildBridge(ctx context.Context, runenv *runtime.RunEnv, initCtx *run.InitContext) (*node.Node, error) {
 	syncclient := initCtx.SyncClient
 
 	appNode, err := GetValidatorInfo(ctx, syncclient, runenv.IntParam("validator"), int(initCtx.GroupSeq))
