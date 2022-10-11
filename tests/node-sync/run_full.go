@@ -67,14 +67,10 @@ func RunFullNode(runenv *runtime.RunEnv, initCtx *run.InitContext) error {
 	if err != nil {
 		return err
 	}
-
-	trustedPeers := []string{bridgeNode.Maddr}
-	cfg := nodekit.NewConfig(node.Full, ip, trustedPeers, bridgeNode.TrustedHash)
-	nd, err := nodekit.NewNode(
-		ndhome,
-		node.Full,
-		cfg,
+	nd, err := nodekit.NewNode(ndhome, node.Full, ip, bridgeNode.TrustedHash,
+		node.WithTrustedPeers(bridgeNode.Maddr),
 	)
+
 	if err != nil {
 		return err
 	}

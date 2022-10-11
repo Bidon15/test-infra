@@ -37,11 +37,10 @@ func BuildBridge(ctx context.Context, runenv *runtime.RunEnv, initCtx *run.InitC
 		return nil, err
 	}
 
-	cfg := nodekit.NewConfig(node.Bridge, ip, []string{}, h)
-	cfg.Core.IP = appNode.IP.To4().String()
-	cfg.Core.RPCPort = "26657"
-
-	nd, err := nodekit.NewNode(ndhome, node.Bridge, cfg)
+	nd, err := nodekit.NewNode(ndhome, node.Bridge, ip, h,
+		node.WithRemoteCoreIP(appNode.IP.To4().String()),
+		node.WithRemoteCorePort("26657"),
+	)
 	if err != nil {
 		return nil, err
 	}

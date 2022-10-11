@@ -80,17 +80,12 @@ func RunFullNode(runenv *runtime.RunEnv, initCtx *run.InitContext) error {
 		return err
 	}
 
-	trustedPeers := []string{bridgeNode.Maddr}
-	cfg := nodekit.NewConfig(node.Full, ip, trustedPeers, bridgeNode.TrustedHash)
-	cfg.Core.IP = appNode.IP.To4().String()
-	cfg.Core.RPCPort = "26657"
-	cfg.Core.GRPCPort = "9090"
-
-	nd, err := nodekit.NewNode(
-		ndhome,
-		node.Full,
-		cfg,
+	nd, err := nodekit.NewNode(ndhome, node.Full, ip, bridgeNode.TrustedHash,
+		node.WithRemoteCoreIP(appNode.IP.To4().String()),
+		node.WithRemoteCorePort("26657"),
+		node.WithTrustedPeers(bridgeNode.Maddr),
 	)
+
 	if err != nil {
 		return err
 	}

@@ -67,16 +67,9 @@ func RunLightNode(runenv *runtime.RunEnv, initCtx *run.InitContext) error {
 		return err
 	}
 
-	trustedPeers := []string{bridgeNode.Maddr}
-	cfg := nodekit.NewConfig(node.Light, ip, trustedPeers, bridgeNode.TrustedHash)
-	nd, err := nodekit.NewNode(
-		ndhome,
-		node.Light,
-		cfg,
+	nd, err := nodekit.NewNode(ndhome, node.Full, ip, bridgeNode.TrustedHash,
+		node.WithTrustedPeers(bridgeNode.Maddr),
 	)
-	if err != nil {
-		return err
-	}
 
 	err = nd.Start(ctx)
 	if err != nil {
