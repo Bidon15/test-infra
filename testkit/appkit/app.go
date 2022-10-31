@@ -135,7 +135,7 @@ func (ak *AppKit) AddGenAccount(addr, amount string) (string, error) {
 }
 
 func (ak *AppKit) SignGenTx(accName, amount, krbackend, krpath string) (string, error) {
-	ethAddress, err := teststaking.RandomEthAddress()
+	ethAddress, err := teststaking.RandomEVMAddress()
 	if err != nil {
 		return "", err
 	}
