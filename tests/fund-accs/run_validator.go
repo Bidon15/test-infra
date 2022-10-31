@@ -101,7 +101,7 @@ package fundaccounts
 
 // 	err = appcmd.FundAccounts(
 // 		appcmd.AccountAddress,
-// 		"10000000utia",
+// 		"10000000ucls",
 // 		"test",
 // 		appcmd.GetHomePath(),
 // 		fundAccs...)

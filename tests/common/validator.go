@@ -103,14 +103,14 @@ func BuildValidator(ctx context.Context, runenv *runtime.RunEnv, initCtx *run.In
 	}
 
 	for _, v := range accounts {
-		_, err := cmd.AddGenAccount(v, "1000000000000000utia")
+		_, err := cmd.AddGenAccount(v, "1000000000000000ucls")
 		if err != nil {
 			return nil, err
 		}
 	}
 
 	runenv.RecordMessage("Validator is signing its own GenTx")
-	_, err = cmd.SignGenTx(keyringName, "5000000000utia", "test", home)
+	_, err = cmd.SignGenTx(keyringName, "5000000000ucls", "test", home)
 	if err != nil {
 		return nil, err
 	}
