@@ -52,10 +52,16 @@ func RunValidator(runenv *runtime.RunEnv, initCtx *run.InitContext) error {
 	}
 
 	runenv.RecordMessage("starting........")
-	go appcmd.StartNode("info")
+	var logLvl string
+	if initCtx.GroupSeq%10 == 0 {
+		logLvl = "info"
+	} else {
+		logLvl = "error"
+	}
+	go appcmd.StartNode(logLvl)
 
 	// // wait for a new block to be produced
-	time.Sleep(1 * time.Minute)
+	time.Sleep(25 * time.Second)
 
 	for i := 0; i < runenv.IntParam("submit-times"); i++ {
 		runenv.RecordMessage("Submitting PFD with %d bytes random data", runenv.IntParam("msg-size"))

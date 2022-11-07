@@ -12,12 +12,12 @@
 
 [global.run.test_params]
   execution-time = "10"
-  latency = "0"
-  bandwidth = "256Mib"
+  latency = "60"
+  bandwidth = "320Mib"
   validator = "40"
   persistent-peers = "10"
   submit-times = "10"
-  msg-size = "100000"
+  msg-size = "180000"
 
 [[groups]]
   id = "validators"
