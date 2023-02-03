@@ -5,7 +5,7 @@
 [global]
   plan = "celestia"
   case = "reconstruction"
-  total_instances = 1435
+  total_instances = 1439
   builder = "docker:generic"
   runner = "cluster:k8s"
   disable_metrics = false
@@ -18,7 +18,7 @@
       light = "1412"
       msg-size = "15000"
       persistent-peers = "10"
-      seed = "1"
+      seed = "5"
       submit-times = "20"
       validator = "10"
 
@@ -29,7 +29,7 @@
     memory = "4Gi"
     cpu = "3"
   [groups.instances]
-    count = 1
+    count = 5
     percentage = 0.0
   [groups.build_config]
     build_base_image = "golang:1.19.1"
